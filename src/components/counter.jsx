@@ -4,10 +4,18 @@ class Counter extends Component {
   state = {
     contador: 0
   };
+
+  style = {
+    fontSize: 50,
+    fontWeight: "bold"
+  };
+
   render() {
     return (
       <React.Fragment>
-        <span className="badge badge-success m-2">{this.formatCount()}</span>
+        <span style={this.style} className="badge badge-success m-2">
+          {this.formatCount()}
+        </span>
         <button className="btn btn-outline-primary btn-sm">Incrementar</button>
       </React.Fragment>
     );
