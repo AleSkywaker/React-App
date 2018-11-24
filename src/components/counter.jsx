@@ -27,10 +27,15 @@ class Counter extends Component {
       </ul>
     );
   }
-  handleIncrement = () => {
+  handleIncrement = producto => {
+    console.log("product", producto);
     console.log("increment", this.state.contador);
     this.setState({ contador: this.state.contador + 1 });
   };
+
+  // doHanleIncrement = () => {
+  //   this.handleIncrement({ id: 1 });
+  // };
 
   render() {
     return (
@@ -39,7 +44,9 @@ class Counter extends Component {
           {this.formatCount()}
         </span>
         <button
-          onClick={this.handleIncrement}
+          // onClick={this.handleIncrement}
+          // eslint-disable-next-line no-undef
+          onClick={() => this.handleIncrement(this.state.contador)}
           style={{ fontSize: 30 }}
           className="btn btn-outline-primary btn-sm"
         >
