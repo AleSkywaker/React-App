@@ -2,12 +2,12 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    contador: 0,
+    value: this.props.value,
     posts: []
   };
 
   style = {
-    fontSize: 50,
+    fontSize: 10,
     fontWeight: "bold"
   };
 
@@ -17,8 +17,8 @@ class Counter extends Component {
   // }
 
   renderTags() {
-    if (this.state.posts.length === 0)
-      return <li>'No hay datos que mostrar';</li>;
+    // if (this.state.posts.length === 0)
+    //   return <li>'No hay datos que mostrar';</li>;
     return (
       <ul>
         {this.state.posts.map(post => (
@@ -28,16 +28,18 @@ class Counter extends Component {
     );
   }
   handleIncrement = producto => {
-    console.log("product", producto);
-    console.log("increment", this.state.contador);
-    this.setState({ contador: this.state.contador + 1 });
+    // console.log("product", producto);
+    // console.log("increment", this.state.contador);
+    this.setState({ value: this.state.value + 1 });
+    // this.setState({ contador: producto });
   };
 
-  // doHanleIncrement = () => {
-  //   this.handleIncrement({ id: 1 });
-  // };
+  doHanleIncrement = () => {
+    this.handleIncrement({ id: 1 });
+  };
 
   render() {
+    console.log("props", this.props);
     return (
       <React.Fragment>
         <span style={this.style} className={this.getBadgeClass()}>
@@ -46,8 +48,9 @@ class Counter extends Component {
         <button
           // onClick={this.handleIncrement}
           // eslint-disable-next-line no-undef
-          onClick={() => this.handleIncrement(this.state.contador)}
-          style={{ fontSize: 30 }}
+          onClick={product => this.handleIncrement(product)}
+          // onMouseEnter={this.doHanleIncrement}
+          style={{ fontSize: 10 }}
           className="btn btn-outline-primary btn-sm"
         >
           Incrementar
@@ -59,13 +62,13 @@ class Counter extends Component {
 
   getBadgeClass() {
     let classes = "badge m-2 badge-";
-    classes += this.state.contador === 0 ? "warning" : "primary";
+    classes += this.state.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { contador } = this.state;
-    return contador === 0 ? "Cero" : contador;
+    const { value } = this.state;
+    return value === 0 ? "Cero" : value;
   }
 }
 
