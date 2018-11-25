@@ -57,6 +57,12 @@ class Counter extends Component {
         >
           Incrementar
         </button>
+        <div
+          className="btn btn-outline-danger btn-sm m-2"
+          style={{ fontSize: 10 }}
+        >
+          Borrar
+        </div>
         {this.renderTags()}
       </React.Fragment>
     );
