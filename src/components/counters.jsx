@@ -13,6 +13,10 @@ class Counters extends Component {
     posts: []
   };
 
+  handleIncrement = counter => {
+    console.log("counter===>", counter);
+  };
+
   handleDelete = counterId => {
     const contadores = this.state.counters.filter(c => c.id !== counterId);
     this.setState({ counters: contadores });
@@ -35,6 +39,7 @@ class Counters extends Component {
             key={counter.id}
             counter={counter}
             onDelete={this.handleDelete}
+            onIncrement={this.handleIncrement}
           >
             <h3>Titulo {counter.id}</h3>
           </Counter>
