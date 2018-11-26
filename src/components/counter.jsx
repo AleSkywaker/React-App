@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    value: this.props.value,
+    value: this.props.counter.value,
     posts: []
   };
 
@@ -42,7 +42,7 @@ class Counter extends Component {
     console.log("props", this.props);
     return (
       <React.Fragment>
-        <h1>{this.props.id}</h1>
+        <h1>{this.props.counter.id}</h1>
         {this.props.children}
         <span style={this.style} className={this.getBadgeClass()}>
           {this.formatCount()}
@@ -60,6 +60,7 @@ class Counter extends Component {
         <div
           className="btn btn-outline-danger btn-sm m-2"
           style={{ fontSize: 10 }}
+          onClick={() => this.props.onDelete(this.props.counter.id)}
         >
           Borrar
         </div>
